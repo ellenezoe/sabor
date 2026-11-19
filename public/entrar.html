@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Acesse sua conta e aproveite nossos produtos frescos.">
+
+    <title>Entrar | Minha Conta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
+    <style>
+
+        /* ==============================
+           VARIÁVEIS
+        ============================== */
+
+        :root {
+            --verde: #31511f;
+            --verde-escuro: #203817;
+            --verde-medio: #4d702b;
+            --verde-claro: #edf5e8;
+            --lima: #a8df65;
+            --creme: #f8f7f1;
+            --branco: #ffffff;
+            --texto: #24331d;
+            --texto-claro: #687261;
+            --borda: #dce7d3;
+
+            --sombra: 0 10px 30px rgba(27, 48, 20, 0.10);
+            --sombra-forte: 0 18px 45px rgba(15, 35, 10, 0.20);
+        }
+
+        /* ==============================
+           RESET E BASE
+        ============================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            color: var(--texto);
+            background: var(--creme);
+
+            font-family: "DM Sans", Arial, Helvetica, sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ==============================
+           CONTAINER PRINCIPAL
+        ============================== */
+
+        .login-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            width: 100%;
+            max-width: 1000px;
+            min-height: 590px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--borda);
+            border-radius: 24px;
+
+            background: var(--branco);
+
+            box-shadow: var(--sombra-forte);
+        }
+
+        /* ==============================
+           PAINEL VISUAL
+        ============================== */
+
+        .login-banner {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding: 45px;
+
+            overflow: hidden;
+
+            color: var(--branco);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 45, 13, 0.94),
+                    rgba(49, 81, 31, 0.78)
+                ),
+                url("images/banner1.png") center / cover no-repeat;
+        }
+
+        .login-banner::after {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            right: -100px;
+            bottom: -100px;
+
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 35px rgba(255,255,255,0.04),
+                0 0 0 70px rgba(255,255,255,0.03);
+        }
+
+        .brand-logo {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--branco);
+
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo .material-icons {
+            color: var(--lima);
+            font-size: 30px;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+
+            max-width: 390px;
+        }
+
+        .banner-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 20px;
+            padding: 8px 13px;
+
+            border: 1px solid rgba(255,255,255,0.20);
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.13);
+
+            color: #f6ffef;
+
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .banner-content h1 {
+            margin: 0 0 18px;
+
+            color: var(--branco);
+
+            font-family: "Playfair Display", Georgia, serif;
+
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.12;
+        }
+
+        .banner-content h1 span {
+            color: var(--lima);
+        }
+
+        .banner-content p {
+            margin: 0;
+
+            color: rgba(255,255,255,0.85);
+
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .banner-footer {
+            position: relative;
+            z-index: 1;
+
+            color: rgba(255,255,255,0.72);
+
+            font-size: 0.78rem;
+        }
+
+        /* ==============================
+           PAINEL DE LOGIN
+        ============================== */
+
+        .login-form-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px 45px;
+        }
+
+        .login-form-content {
+            width: 100%;
+            max-width: 370px;
+        }
+
+        .mobile-logo {
+            display: none;
+        }
+
+        .login-heading {
+            margin-bottom: 32px;
+        }
+
+        .login-heading .section-eyebrow {
+            display: inline-block;
+
+            margin-bottom: 10px;
+
+            color: var(--verde-medio);
+
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .login-heading h2 {
+            margin: 0;
+
+            color: var(--verde-escuro);
+
+            font-family: "Playfair Display", Georgia, serif;
+
+            font-size: 2.35rem;
+            font-weight: 800;
+        }
+
+        .login-heading p {
+            margin: 10px 0 0;
+
+            color: var(--texto-claro);
+
+            font-size: 0.91rem;
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           CAMPOS DO FORMULÁRIO
+        ============================== */
+
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: var(--texto);
+
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .input-wrapper {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            height: 51px;
+
+            border: 1px solid var(--borda);
+            border-radius: 9px;
+
+            background: var(--branco);
+
+            transition: 0.2s ease;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: var(--verde-medio);
+
+            box-shadow:
+                0 0 0 3px rgba(77,112,43,0.12);
+        }
+
+        .input-wrapper > .material-icons {
+            margin-left: 14px;
+
+            color: var(--verde-medio);
+
+            font-size: 21px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 100%;
+
+            padding: 0 12px;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: var(--texto);
+
+            font-size: 0.88rem;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #a0a99a;
+        }
+
+        .toggle-password {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 45px;
+            height: 100%;
+
+            padding: 0;
+
+            border: none;
+            background: transparent;
+
+            color: var(--texto-claro);
+        }
+
+        .toggle-password:hover {
+            color: var(--verde);
+        }
+
+        /* ==============================
+           OPÇÕES DO LOGIN
+        ============================== */
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            margin: 5px 0 25px;
+
+            font-size: 0.78rem;
+        }
+
+        .remember-option {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: var(--texto-claro);
+        }
+
+        .remember-option input {
+            width: 15px;
+            height: 15px;
+
+            accent-color: var(--verde-medio);
+
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: var(--verde-medio);
+            font-weight: 700;
+
+            transition: color 0.2s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--verde-escuro);
+            text-decoration: underline;
+        }
+
+        /* ==============================
+           BOTÃO DE ACESSO
+        ============================== */
+
+        .btn-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            width: 100%;
+            height: 51px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: var(--verde-medio);
+
+            color: var(--branco);
+
+            font-size: 0.91rem;
+            font-weight: 800;
+
+            box-shadow: 0 5px 14px rgba(49,81,31,0.17);
+
+            transition:
+                background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background: var(--verde);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 8px 19px rgba(49,81,31,0.22);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:focus-visible,
+        .toggle-password:focus-visible,
+        a:focus-visible {
+            outline: 3px solid var(--lima);
+            outline-offset: 3px;
+        }
+
+        /* ==============================
+           RODAPÉ DO FORMULÁRIO
+        ============================== */
+
+        .register-link {
+            margin-top: 27px;
+
+            color: var(--texto-claro);
+
+            text-align: center;
+
+            font-size: 0.83rem;
+        }
+
+        .register-link a {
+            color: var(--verde-medio);
+            font-weight: 800;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .security-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+
+            margin-top: 30px;
+
+            color: #899483;
+
+            font-size: 0.72rem;
+        }
+
+        .security-info .material-icons {
+            color: var(--verde-medio);
+            font-size: 16px;
+        }
+
+        /* ==============================
+           RESPONSIVIDADE
+        ============================== */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .login-container {
+                grid-template-columns: 0.8fr 1.2fr;
+                min-height: 550px;
+            }
+
+            .login-banner {
+                padding: 30px;
+            }
+
+            .login-form-area {
+                padding: 35px 25px;
+            }
+
+            .banner-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                align-items: center;
+
+                min-height: 100vh;
+
+                padding: 18px;
+
+                background: var(--verde-claro);
+            }
+
+            .login-container {
+                display: block;
+
+                max-width: 430px;
+                min-height: auto;
+
+                border-radius: 19px;
+            }
+
+            .login-banner {
+                display: none;
+            }
+
+            .login-form-area {
+                padding: 38px 25px;
+            }
+
+            .login-form-content {
+                max-width: 100%;
+            }
+
+            .mobile-logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+
+                margin-bottom: 35px;
+
+                color: var(--verde-escuro);
+
+                font-size: 1.22rem;
+                font-weight: 800;
+            }
+
+            .mobile-logo .material-icons {
+                color: var(--verde-medio);
+                font-size: 29px;
+            }
+
+            .login-heading {
+                margin-bottom: 27px;
+            }
+
+            .login-heading h2 {
+                font-size: 2rem;
+            }
+
+            .login-heading p {
+                font-size: 0.87rem;
+            }
+
+            .form-options {
+                font-size: 0.73rem;
+            }
+
+            .security-info {
+                margin-top: 26px;
+            }
+        }
+
+        @media (max-width: 350px) {
+
+            .login-form-area {
+                padding: 30px 18px;
+            }
+
+            .form-options {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="login-container">
+
+        <!-- PAINEL VISUAL -->
+        <section class="login-banner">
+
+            <div class="brand-logo">
+                <span class="material-icons">eco</span>
+                <span>Sabor Tapajós</span>
+            </div>
+
+            <div class="banner-content">
+
+                <div class="banner-tag">
+                    <span class="material-icons">spa</span>
+                    Qualidade e frescor todos os dias
+                </div>
+
+                <h1>
+                    O melhor da natureza,
+                    <span>perto de você.</span>
+                </h1>
+
+                <p>
+                    Entre na sua conta e descubra uma experiência
+                    de compras mais prática, saudável e especial.
+                </p>
+
+            </div>
+
+            <div class="banner-footer">
+                © 2026 Sabor Tapajós. Todos os direitos reservados.
+            </div>
+
+        </section>
+
+
+        <!-- FORMULÁRIO DE LOGIN -->
+        <section class="login-form-area">
+
+            <div class="login-form-content">
+
+                <!-- LOGO MOBILE -->
+                <div class="mobile-logo">
+                    <span class="material-icons">eco</span>
+                   Sabor Tapajós
+                </div>
+
+
+                <!-- CABEÇALHO -->
+                <header class="login-heading">
+
+                    <span class="section-eyebrow">
+                        Seja bem-vindo!
+                    </span>
+
+                    <h2>Entrar na conta</h2>
+
+                    <p>
+                        Informe seus dados abaixo para acessar
+                        sua conta.
+                    </p>
+
+                </header>
+
+
+                <!-- FORMULÁRIO -->
+                <form id="formEntrar" action="#" method="POST">
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="material-icons">
+                                mail_outline
+                            </span>
+
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SENHA -->
+                    <div class="form-group">
+
+                        <label for="senha">
+                            Senha
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="material-icons">
+                                lock_outline
+                            </span>
+
+                            <input
+                                id="senha"
+                                type="password"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="toggleSenha"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false"
+                            >
+                                <span class="material-icons"
+                                    aria-hidden="true">
+                                    visibility
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPÇÕES -->
+                    <div class="form-options">
+
+                        <label class="remember-option">
+
+                            <input
+                                type="checkbox"
+                                id="lembrar"
+                                name="lembrar"
+                            >
+
+                            <span>Manter conectado</span>
+
+                        </label>
+
+                        <a href="./recuperar-senha.html"
+                            class="forgot-password">
+                            Esqueceu a senha?
+                        </a>
+
+                    </div>
+
+
+                    <!-- BOTÃO -->
+                    <button
+                        type="submit"
+                        class="btn-login"
+                    >
+
+                        <span>Acessar minha conta</span>
+
+                        <span class="material-icons">
+                            arrow_forward
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- CADASTRO -->
+                <div class="register-link">
+
+                    Ainda não tem uma conta?
+
+                    <a href="./cadastro.html">
+                        Cadastre-se
+                    </a>
+
+                </div>
+
+
+                <!-- SEGURANÇA -->
+                <div class="security-info">
+
+                    <span class="material-icons">
+                        verified_user
+                    </span>
+
+                    Seus dados são protegidos.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SCRIPT DE VISUALIZAÇÃO DA SENHA -->
+    <script>
+        const senha = document.getElementById("senha");
+        const toggleSenha = document.getElementById("toggleSenha");
+
+        toggleSenha.addEventListener("click", function () {
+
+            const mostrarSenha = senha.type === "password";
+
+            senha.type = mostrarSenha ? "text" : "password";
+
+            toggleSenha.setAttribute(
+                "aria-label",
+                mostrarSenha ? "Ocultar senha" : "Mostrar senha"
+            );
+
+            toggleSenha.setAttribute(
+                "aria-pressed",
+                String(mostrarSenha)
+            );
+
+            toggleSenha.querySelector(".material-icons").textContent =
+                mostrarSenha ? "visibility_off" : "visibility";
+
+        });
+    </script>
+
+
+    <!-- SCRIPT ORIGINAL DE AUTENTICAÇÃO -->
+    <script src="./entrar.js"></script>
+
+</body>
+</html>
