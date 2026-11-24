@@ -14,7 +14,7 @@ if (!fs.existsSync(uploadDir)) {
 //Importa as rotas a serem usadas
 const rotasVendedor = require("./routes/vendedor.route.js");
 const rotasProduto = require("./routes/product.route.js");
-const rotasCooperativa = require("./routes/cooperativa.route.js");
+const rotasCooperativa = require("./routes/cooperativas.route.js");
 const rotasCooperativaVendedor = require("./routes/cooperativa_vendedor.route.js");
 
 const app = express();//Inicializa o servidor express
